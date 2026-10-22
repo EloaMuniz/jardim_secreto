@@ -331,7 +331,7 @@ http://localhost:8000
 
 Se a página não abrir ou houver erro de conexão, confira se o PHP está instalado, se o PostgreSQL está ativo e se as credenciais do arquivo de conexão estão corretas.
 
-## Os oito passos
+## Passos
 
 1. **Ligue o PostgreSQL.** Confirme que ele está em execução. No Windows, procure o serviço do PostgreSQL ou abra o pgAdmin e conecte no servidor.
 2. **Crie o banco (só na primeira vez).** Conectada no banco `postgres`, rode o comando `CREATE DATABASE jardim_secreto;`.
