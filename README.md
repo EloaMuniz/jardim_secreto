@@ -331,6 +331,37 @@ http://localhost:8000
 
 Se a página não abrir ou houver erro de conexão, confira se o PHP está instalado, se o PostgreSQL está ativo e se as credenciais do arquivo de conexão estão corretas.
 
+# Como entrar no site: passo a passo
+
+## Os oito passos
+
+1. **Ligue o PostgreSQL.** Confirme que ele está em execução. No Windows, procure o serviço do PostgreSQL ou abra o pgAdmin e conecte no servidor.
+2. **Crie o banco (só na primeira vez).** Conectada no banco `postgres`, rode o comando `CREATE DATABASE jardim_secreto;`.
+3. **Crie as tabelas e os dados de teste.** Conecte no banco `jardim_secreto` e execute todo o conteúdo do arquivo `database/banco.sql`. Atenção: esse script apaga e recria as tabelas, então rodá-lo de novo devolve os dados ao estado inicial.
+4. **Confira a conexão.** Abra `database/connect.php` e confira os quatro dados: `$host` (localhost), `$dbname` (jardim_secreto), `$user` (postgres) e `$pass` (a senha do seu PostgreSQL, no lugar de SUA_SENHA). Salve o arquivo.
+5. **Abra o terminal na pasta do projeto.** No VS Code, abra a pasta `jardim_secreto` (File > Open Folder) e use Terminal > New Terminal. A pasta certa é a que contém o `index.php`. Para conferir, digite `dir` (Windows) ou `ls` (Mac e Linux) e veja se o `index.php` aparece na lista.
+6. **Inicie o servidor.** Digite `php -S localhost:8000` e aperte Enter. Deve aparecer uma mensagem dizendo que o servidor foi iniciado. Deixe esse terminal aberto: se ele for fechado, o site sai do ar.
+7. **Abra o site.** No navegador, digite `http://localhost:8000` e aperte Enter. Deve aparecer a página inicial do Jardim Secreto, com o menu no topo e os buquês de inspiração.
+8. **Entre no sistema.** Clique em "Entrar" no menu e use uma das contas de teste abaixo, ou crie a sua em "Cadastre-se".
+
+## Alternativa com XAMPP
+
+Se você usa o XAMPP, copie a pasta `jardim_secreto` para a pasta `htdocs`, ligue o Apache e acesse `http://localhost/jardim_secreto/`. O PostgreSQL continua sendo ligado à parte, e a extensão `pdo_pgsql` precisa estar ativa no `php.ini`.
+
+## Se algo der errado
+
+| O que aparece | O que fazer |
+| --- | --- |
+| `php` não é reconhecido | O PHP não está instalado ou não está no PATH. Instale ou ajuste e abra um terminal novo |
+| could not find driver | No `php.ini`, tire o `;` de `extension=pdo_pgsql` e `extension=pgsql` e reinicie o servidor |
+| password authentication failed | Usuário ou senha errados no `connect.php` |
+| database "jardim_secreto" does not exist | Crie o banco (passo 2) |
+| relation ... does not exist | Rode o `banco.sql` no banco `jardim_secreto` (passo 3) |
+| Connection refused | O PostgreSQL está desligado (passo 1) ou usa outra porta |
+| O site abre sem cores nem estilo | O servidor foi iniciado em outra pasta. Pressione Ctrl + C, entre na pasta que tem o `index.php` e inicie de novo |
+| Porta 8000 em uso | Use `php -S localhost:8080` e abra `http://localhost:8080` |
+| E-mail ou senha incorretos ao entrar | As contas de teste só existem depois do `banco.sql`; ou crie uma conta em "Cadastre-se" |
+
 ## 13. Testes e verificações
 
 Durante a utilização do sistema, é importante verificar se as principais funcionalidades estão funcionando corretamente.
@@ -351,8 +382,6 @@ Alguns testes que podem ser realizados são:
 - Conferir se os dados foram registrados corretamente no PostgreSQL.
 
 Esses testes ajudam a identificar problemas nos formulários, nas permissões, nas operações de cadastro e na comunicação com o banco de dados.
-
-*Os testes devem ser executados no sistema antes da entrega, para que o README apresente somente resultados que foram realmente verificados.*
 
 ## 14. Segurança e cuidados com os dados
 
