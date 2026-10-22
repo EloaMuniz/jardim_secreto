@@ -331,8 +331,6 @@ http://localhost:8000
 
 Se a página não abrir ou houver erro de conexão, confira se o PHP está instalado, se o PostgreSQL está ativo e se as credenciais do arquivo de conexão estão corretas.
 
-# Como entrar no site: passo a passo
-
 ## Os oito passos
 
 1. **Ligue o PostgreSQL.** Confirme que ele está em execução. No Windows, procure o serviço do PostgreSQL ou abra o pgAdmin e conecte no servidor.
@@ -343,24 +341,6 @@ Se a página não abrir ou houver erro de conexão, confira se o PHP está insta
 6. **Inicie o servidor.** Digite `php -S localhost:8000` e aperte Enter. Deve aparecer uma mensagem dizendo que o servidor foi iniciado. Deixe esse terminal aberto: se ele for fechado, o site sai do ar.
 7. **Abra o site.** No navegador, digite `http://localhost:8000` e aperte Enter. Deve aparecer a página inicial do Jardim Secreto, com o menu no topo e os buquês de inspiração.
 8. **Entre no sistema.** Clique em "Entrar" no menu e use uma das contas de teste abaixo, ou crie a sua em "Cadastre-se".
-
-## Alternativa com XAMPP
-
-Se você usa o XAMPP, copie a pasta `jardim_secreto` para a pasta `htdocs`, ligue o Apache e acesse `http://localhost/jardim_secreto/`. O PostgreSQL continua sendo ligado à parte, e a extensão `pdo_pgsql` precisa estar ativa no `php.ini`.
-
-## Se algo der errado
-
-| O que aparece | O que fazer |
-| --- | --- |
-| `php` não é reconhecido | O PHP não está instalado ou não está no PATH. Instale ou ajuste e abra um terminal novo |
-| could not find driver | No `php.ini`, tire o `;` de `extension=pdo_pgsql` e `extension=pgsql` e reinicie o servidor |
-| password authentication failed | Usuário ou senha errados no `connect.php` |
-| database "jardim_secreto" does not exist | Crie o banco (passo 2) |
-| relation ... does not exist | Rode o `banco.sql` no banco `jardim_secreto` (passo 3) |
-| Connection refused | O PostgreSQL está desligado (passo 1) ou usa outra porta |
-| O site abre sem cores nem estilo | O servidor foi iniciado em outra pasta. Pressione Ctrl + C, entre na pasta que tem o `index.php` e inicie de novo |
-| Porta 8000 em uso | Use `php -S localhost:8080` e abra `http://localhost:8080` |
-| E-mail ou senha incorretos ao entrar | As contas de teste só existem depois do `banco.sql`; ou crie uma conta em "Cadastre-se" |
 
 ## 13. Testes e verificações
 
@@ -418,3 +398,6 @@ Essas melhorias podem ser implementadas conforme as necessidades identificadas d
 O desenvolvimento do Jardim Secreto permitiu reunir diferentes conhecimentos trabalhados no curso Técnico em Desenvolvimento de Sistemas, principalmente na criação de páginas web, na utilização do PHP e na integração com um banco de dados PostgreSQL.
 
 O projeto busca oferecer uma forma mais organizada de consultar opções de buquês e personalizar uma composição de acordo com as preferências da noiva. Ao mesmo tempo, trabalha conceitos importantes para o desenvolvimento de sistemas, como formulários, autenticação, controle de acesso, operações CRUD e relacionamento entre tabelas.
+
+fluxograma
+<img width="394" height="416" alt="image" src="https://github.com/user-attachments/assets/0b53bf37-3d54-47b6-bfd7-69c947e83e51" />
